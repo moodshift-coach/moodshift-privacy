@@ -22,13 +22,14 @@
     --green: #3b6d11;
     --green-light: #5a9a2a;
     --green-bg: #eaf3de;
+    --red: #893444;
+    --red-bg: #feeef2;
     --ring1: rgba(197,191,240,0.8);
     --ring2: rgba(212,207,245,0.6);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-size:16px; line-height:1.8; min-height:100vh; overflow-x:hidden; }
 
-  /* SVG rings background */
   .bg-rings {
     position:fixed; top:0; left:0; width:100%; height:100%;
     pointer-events:none; z-index:0; overflow:hidden;
@@ -37,7 +38,6 @@
 
   .container { position:relative; z-index:1; max-width:760px; margin:0 auto; padding:80px 24px 120px; }
 
-  /* Header */
   .header { text-align:center; margin-bottom:64px; }
   .logo { display:inline-flex; align-items:center; gap:14px; margin-bottom:36px; }
   .logo-icon { width:52px; height:52px; background:var(--purple); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(124,111,205,0.3); }
@@ -51,19 +51,16 @@
 
   .divider { width:60px; height:2px; background:linear-gradient(90deg,transparent,var(--purple),transparent); margin:48px auto; border:none; }
 
-  /* Summary */
   .summary-card { background:linear-gradient(135deg,rgba(124,111,205,0.08),rgba(197,191,240,0.12)); border:1px solid var(--border-strong); border-radius:24px; padding:32px; margin-bottom:48px; }
   .summary-card p { color:var(--text-body); font-size:15px; line-height:1.9; }
   .summary-card strong { color:var(--purple-dark); font-weight:500; }
 
-  /* Highlights */
   .highlights { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:56px; }
   .highlight { background:white; border:0.5px solid var(--border); border-radius:18px; padding:22px 16px; text-align:center; box-shadow:0 2px 12px rgba(124,111,205,0.08); }
   .highlight-icon { font-size:30px; margin-bottom:10px; display:block; }
   .highlight-title { font-size:13px; font-weight:500; color:var(--green); display:block; margin-bottom:4px; }
   .highlight-desc { font-size:12px; color:var(--text-muted); line-height:1.5; }
 
-  /* Sections */
   .section { margin-bottom:48px; }
   h2 { font-family:'DM Serif Display',serif; font-size:26px; font-weight:400; color:var(--purple-dark); margin-bottom:20px; display:flex; align-items:center; gap:14px; }
   h2::before { content:''; display:block; width:4px; height:28px; background:var(--purple); border-radius:2px; flex-shrink:0; }
@@ -74,15 +71,20 @@
   ul li:last-child { border-bottom:none; }
   ul li::before { content:'→'; position:absolute; left:0; color:var(--purple); font-size:13px; top:9px; }
 
-  /* Blocks */
   .block { background:white; border:0.5px solid var(--border); border-radius:18px; padding:24px; margin:20px 0; box-shadow:0 2px 12px rgba(124,111,205,0.06); }
   .block.green-block { border-color:rgba(59,109,17,0.3); background:var(--green-bg); box-shadow:0 2px 12px rgba(59,109,17,0.06); }
   .block.green-block p,.block.green-block li { color:#3a5a18; }
   .block.green-block li::before { color:var(--green); }
+  
+  /* Czerwony blok dla disclaimera medycznego */
+  .block.red-block { border-color:rgba(242,78,112,0.3); background:var(--red-bg); box-shadow:0 2px 12px rgba(242,78,112,0.06); }
+  .block.red-block p, .block.red-block li { color:var(--red); }
+  .block.red-block li::before { color:#f24e70; }
+
   .block-title { font-size:12px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--purple-light); margin-bottom:12px; display:block; }
   .block.green-block .block-title { color:var(--green); }
+  .block.red-block .block-title { color:#f24e70; }
 
-  /* Contact */
   .contact { background:linear-gradient(135deg,white,rgba(240,238,255,0.8)); border:1px solid var(--border-strong); border-radius:24px; padding:48px 40px; text-align:center; margin-top:64px; box-shadow:0 4px 24px rgba(124,111,205,0.1); }
   .contact h2 { justify-content:center; margin-bottom:12px; }
   .contact h2::before { display:none; }
@@ -90,7 +92,6 @@
   .contact-btn { display:inline-block; background:var(--purple); color:white; text-decoration:none; padding:14px 36px; border-radius:100px; font-size:15px; font-weight:500; box-shadow:0 4px 16px rgba(124,111,205,0.35); transition:transform 0.2s,box-shadow 0.2s; }
   .contact-btn:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(124,111,205,0.45); }
 
-  /* Footer */
   .footer { text-align:center; margin-top:72px; padding-top:32px; border-top:0.5px solid var(--border); color:var(--text-muted); font-size:13px; }
   .footer span { color:var(--purple); }
   a { color:var(--purple); text-decoration:none; }
@@ -106,7 +107,6 @@
 </head>
 <body>
 
-<!-- SVG rings background — light mode colors -->
 <div class="bg-rings">
   <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -116,7 +116,6 @@
       </radialGradient>
     </defs>
     <rect width="1440" height="900" fill="url(#bgGrad)"/>
-    <!-- Concentric rings centered -->
     <circle cx="720" cy="400" r="60"  fill="none" stroke="#c5bff0" stroke-width="0.8" opacity="0.9"/>
     <circle cx="720" cy="400" r="120" fill="none" stroke="#d4cff5" stroke-width="0.7" opacity="0.8"/>
     <circle cx="720" cy="400" r="190" fill="none" stroke="#c5bff0" stroke-width="0.6" opacity="0.7"/>
@@ -127,17 +126,6 @@
     <circle cx="720" cy="400" r="690" fill="none" stroke="#d4cff5" stroke-width="0.4" opacity="0.28"/>
     <circle cx="720" cy="400" r="820" fill="none" stroke="#c5bff0" stroke-width="0.3" opacity="0.2"/>
     <circle cx="720" cy="400" r="960" fill="none" stroke="#d4cff5" stroke-width="0.3" opacity="0.15"/>
-    <!-- Subtle stars/dots -->
-    <circle cx="180" cy="120" r="1.5" fill="#9b8fd4" opacity="0.4"/>
-    <circle cx="340" cy="200" r="1"   fill="#7c6fcd" opacity="0.3"/>
-    <circle cx="95"  cy="320" r="2"   fill="#9b8fd4" opacity="0.25"/>
-    <circle cx="1260" cy="150" r="1.5" fill="#9b8fd4" opacity="0.4"/>
-    <circle cx="1100" cy="80"  r="1"   fill="#7c6fcd" opacity="0.3"/>
-    <circle cx="1340" cy="300" r="2"   fill="#9b8fd4" opacity="0.25"/>
-    <circle cx="200" cy="700" r="1.5" fill="#9b8fd4" opacity="0.3"/>
-    <circle cx="1250" cy="680" r="1.5" fill="#9b8fd4" opacity="0.3"/>
-    <circle cx="480" cy="820" r="1"   fill="#7c6fcd" opacity="0.2"/>
-    <circle cx="980" cy="800" r="1"   fill="#7c6fcd" opacity="0.2"/>
   </svg>
 </div>
 
@@ -162,7 +150,7 @@
   </div>
 
   <div class="summary-card">
-    <p><strong>The short version:</strong> MoodShift is built on a foundation of privacy. Your therapy conversations stay on your device. We never sell your data, never show you ads, and we use AI only to power your coaching sessions — not to profile you. This policy explains exactly what we collect, why, and how you can control it.</p>
+    <p><strong>The short version:</strong> MoodShift is built on a foundation of privacy. Your conversations stay exclusively on your device. We never sell your data, never show you ads, and we use AI only to power your coaching sessions — not to profile you.</p>
   </div>
 
   <div class="highlights">
@@ -176,8 +164,13 @@
 
   <div class="section">
     <h2>Who we are</h2>
-    <p>MoodShift: CBT AI Coach ("MoodShift", "we", "our") is an iOS mental wellness application. MoodShift uses Cognitive Behavioral Therapy (CBT) techniques delivered through an AI-powered coaching interface — available as text sessions and Voice AI sessions.</p>
-    <p>MoodShift is not a medical device and does not provide clinical therapy, diagnosis, or treatment. It is a self-help wellness tool designed to support emotional reflection and cognitive reframing.</p>
+    <p>MoodShift: CBT AI Coach ("MoodShift", "we", "our") is an iOS mental wellness application. MoodShift uses Cognitive Behavioral Therapy (CBT) techniques delivered through an AI-powered coaching interface.</p>
+    
+    <div class="block red-block">
+      <span class="block-title">⚠ IMPORTANT: MEDICAL DISCLAIMER</span>
+      <p>MoodShift is <strong>not a medical device</strong> and does not provide clinical therapy, diagnosis, or treatment. It is a self-help wellness tool designed to support emotional reflection and cognitive reframing.</p>
+      <p style="margin-top:10px; font-weight: 500;">If you are experiencing a crisis, please contact emergency services or a mental health crisis line immediately.</p>
+    </div>
   </div>
 
   <div class="section">
@@ -190,7 +183,7 @@
         <li>CBT session conversations and messages</li>
         <li>Mood scores (1–10) from completed sessions</li>
         <li>AI memory summaries — only if you enable "AI Coach Personalization"</li>
-        <li>Session history, type (text or Voice AI), and completion status</li>
+        <li>Session history, type, and completion status</li>
         <li>App preferences (language, theme, disclaimer acceptance)</li>
       </ul>
     </div>
@@ -198,38 +191,11 @@
     <h3>Data processed by AI (not stored)</h3>
     <div class="block">
       <span class="block-title">Anthropic Claude API</span>
-      <p>Your messages are sent to Anthropic's Claude API to generate CBT coaching responses. This data is processed in real-time and is <strong>not stored or used for AI training</strong> under our API agreement. Sessions pass through our Cloudflare Workers proxy which applies rate limiting only — no content logging.</p>
-    </div>
-
-    <h3>Voice AI sessions (Voice AI plan only)</h3>
-    <div class="block">
-      <span class="block-title">Speech Recognition &amp; Synthesis — fully on-device</span>
-      <p>Voice sessions use Apple's on-device Speech Recognition (SFSpeechRecognizer). Your voice is processed locally — audio is not sent to external servers. Transcribed text is sent to the Claude API. AI responses are spoken using Apple's AVSpeechSynthesizer, also processed entirely on-device. No audio recordings are stored.</p>
+      <p>Your messages are processed in real-time by the Claude API to generate coaching responses. This data is <strong>not stored or used for AI training</strong> under our agreement. We do not use cloud backups or remote storage (no iCloud).</p>
     </div>
 
     <h3>Purchase information</h3>
-    <p>Premium and Voice AI subscriptions are processed entirely by Apple through the App Store. We never see or store your payment details. We receive only subscription status confirmation via StoreKit 2.</p>
-
-    <h3>What we do NOT collect</h3>
-    <ul>
-      <li>Your name, email address, or any account information</li>
-      <li>Device identifiers or advertising IDs</li>
-      <li>Location data</li>
-      <li>Analytics, crash reports, or usage tracking</li>
-      <li>Audio recordings from Voice AI sessions</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>How we use your data</h2>
-    <ul>
-      <li>To provide AI CBT coaching responses during text and voice sessions</li>
-      <li>To display your session history and mood trends within the app</li>
-      <li>To personalize future sessions using "AI Coach Personalization" (only when enabled by you)</li>
-      <li>To enforce session limits for Free plan users (3 sessions/week)</li>
-      <li>To verify subscription status for Premium and Voice AI features</li>
-    </ul>
-    <p>We do not use your data for advertising, profiling, or any purpose beyond operating the app's features.</p>
+    <p>Subscriptions are processed entirely by Apple. We never see or store your payment details. We receive only status confirmation via StoreKit 2.</p>
   </div>
 
   <div class="section">
@@ -239,80 +205,38 @@
       <p>3 text sessions per week. No account required. All data local only.</p>
     </div>
     <div class="block">
-      <span class="block-title">Premium — 8.99 EUR/month</span>
-      <p>Unlimited standard text sessions (10 questions per session) and AI Coach Personalization. All conversation data remains local.</p>
+      <span class="block-title">Premium</span>
+      <p>Unlimited standard text sessions (10 questions per session) and AI Coach Personalization. All conversation data remains strictly local to your device.</p>
     </div>
     <div class="block">
-      <span class="block-title">Voice AI — 19.99 EUR/month</span>
-      <p>Everything in Premium plus: Deep text sessions (15 questions for complete analysis) and 30 Voice AI sessions per month (3 min and 5 min formats). Voice processing is entirely on-device via Apple frameworks. The 30-session limit ensures service quality and sustainability.</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Third-party services</h2>
-    <div class="block">
-      <span class="block-title">Anthropic (Claude API)</span>
-      <p>Powers AI coaching responses. Data processed but not stored for training. <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy →</a></p>
-    </div>
-    <div class="block">
-      <span class="block-title">Cloudflare Workers</span>
-      <p>Our API proxy applying rate limiting only. No session content is logged. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare Privacy Policy →</a></p>
-    </div>
-    <div class="block">
-      <span class="block-title">Apple (App Store, StoreKit, Speech, AVSpeech)</span>
-      <p>Handles purchases, and all on-device voice processing. <a href="https://www.apple.com/privacy/" target="_blank">Apple Privacy Policy →</a></p>
+      <span class="block-title">Voice AI</span>
+      <p>Everything in Premium plus Voice AI sessions. Voice processing is entirely on-device via Apple frameworks. No audio recordings are stored or transmitted.</p>
     </div>
   </div>
 
   <div class="section">
     <h2>Your rights &amp; controls</h2>
     <ul>
-      <li><strong>Delete sessions:</strong> Swipe left on any session in History to delete permanently</li>
-      <li><strong>Disable AI memory:</strong> Uncheck "AI Coach Personalization" before starting a session</li>
-      <li><strong>Delete all data:</strong> Delete the app to remove all local data permanently</li>
-      <li><strong>Manage subscription:</strong> Cancel anytime via App Store → Account → Subscriptions</li>
+      <li><strong>Delete sessions:</strong> Swipe left on any session in History to delete permanently.</li>
+      <li><strong>Delete all data:</strong> Delete the app to remove all local data permanently. <strong>Note:</strong> Since we do not use cloud backups, deleted data cannot be recovered.</li>
+      <li><strong>Manage subscription:</strong> Cancel anytime via App Store → Account → Subscriptions.</li>
     </ul>
-    <p>As MoodShift requires no account, there is no profile to delete. All your data exists only on your device.</p>
-  </div>
-
-  <div class="section">
-    <h2>Mental health &amp; sensitive data</h2>
-    <div class="block green-block">
-      <span class="block-title">Our commitment</span>
-      <p>CBT sessions may contain deeply personal thoughts and feelings. This is exactly why we built MoodShift with a local-first architecture — your most sensitive data never leaves your device.</p>
-      <p>MoodShift is not a substitute for professional mental health care. If you are experiencing a crisis, please contact emergency services or a mental health crisis line in your country.</p>
-    </div>
   </div>
 
   <div class="section">
     <h2>Children's privacy</h2>
-    <p>MoodShift is intended exclusively for users aged 18 and older (and 19 and older in South Korea). The application is not designed for, or directed at, children or minors. We do not knowingly collect, store, or process personal data from individuals under these ages. If you are under the age of 18 (or 19 in South Korea), please do not use this application. If you believe that a minor has accessed MoodShift in violation of these terms, please contact us immediately.</p>
-  </div>
-
-  <div class="section">
-    <h2>GDPR &amp; international users</h2>
-    <ul>
-      <li>Legal basis for AI processing: Contractual necessity (to deliver the coaching service)</li>
-      <li>No cross-border transfers of personal data directly by us</li>
-      <li>Right to erasure: delete the app and all local data is removed immediately</li>
-      <li>No systematic personal data processing requiring a DPO</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Changes to this policy</h2>
-    <p>We may update this Privacy Policy to reflect changes in features or legal requirements. We will notify you of significant changes through an in-app notice. The "Effective" date at the top indicates the last update.</p>
+    <p>MoodShift is intended exclusively for users aged 18 and older (19 in South Korea). We do not knowingly collect data from minors. If you believe a minor has used MoodShift, please contact us.</p>
   </div>
 
   <div class="contact">
     <h2>Questions?</h2>
-    <p>We're a small independent team and we take privacy seriously. If you have any questions about this policy or your data, reach out directly.</p>
+    <p>We're a small independent team and we take privacy seriously. Reach out directly if you have questions.</p>
     <a href="mailto:moodshift.coach@gmail.com" class="contact-btn">moodshift.coach@gmail.com</a>
   </div>
 
   <div class="footer">
     <p>© 2026 MoodShift: CBT AI Coach &nbsp;·&nbsp; <span>Built with privacy in mind</span></p>
-    <p style="margin-top:8px">Version 1.0 &nbsp;·&nbsp; Effective March 2026</p>
+    <p style="margin-top:8px">Version 1.0 &nbsp;·&nbsp; Effective April 2026</p>
   </div>
 
 </div>
