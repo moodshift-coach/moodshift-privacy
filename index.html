@@ -207,9 +207,6 @@
       <p>Voice sessions use Apple's on-device Speech Recognition (SFSpeechRecognizer). Your voice is processed locally — audio is not sent to external servers. Transcribed text is sent to the Claude API. AI responses are spoken using Apple's AVSpeechSynthesizer, also processed entirely on-device. No audio recordings are stored.</p>
     </div>
 
-    <h3>iCloud sync (optional)</h3>
-    <p>If you enable iCloud sync in History, your session data is stored in your personal iCloud account via CloudKit. Apple's privacy policy governs this storage. You can disable sync and delete all iCloud data at any time from within the app.</p>
-
     <h3>Purchase information</h3>
     <p>Premium and Voice AI subscriptions are processed entirely by Apple through the App Store. We never see or store your payment details. We receive only subscription status confirmation via StoreKit 2.</p>
 
@@ -243,7 +240,7 @@
     </div>
     <div class="block">
       <span class="block-title">Premium — 8.99 EUR/month</span>
-      <p>Unlimited standard text sessions (10 questions per session), AI Coach Personalization, and iCloud sync. All conversation data remains local unless you enable iCloud sync.</p>
+      <p>Unlimited standard text sessions (10 questions per session), AI Coach Personalization, and iCloud sync. All conversation data remains local.</p>
     </div>
     <div class="block">
       <span class="block-title">Voice AI — 19.99 EUR/month</span>
@@ -262,8 +259,8 @@
       <p>Our API proxy applying rate limiting only. No session content is logged. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare Privacy Policy →</a></p>
     </div>
     <div class="block">
-      <span class="block-title">Apple (App Store, iCloud, StoreKit, Speech, AVSpeech)</span>
-      <p>Handles purchases, optional cloud sync, and all on-device voice processing. <a href="https://www.apple.com/privacy/" target="_blank">Apple Privacy Policy →</a></p>
+      <span class="block-title">Apple (App Store, StoreKit, Speech, AVSpeech)</span>
+      <p>Handles purchases, and all on-device voice processing. <a href="https://www.apple.com/privacy/" target="_blank">Apple Privacy Policy →</a></p>
     </div>
   </div>
 
@@ -272,18 +269,17 @@
     <ul>
       <li><strong>Delete sessions:</strong> Swipe left on any session in History to delete permanently</li>
       <li><strong>Disable AI memory:</strong> Uncheck "AI Coach Personalization" before starting a session</li>
-      <li><strong>Disable iCloud sync:</strong> Tap the iCloud icon in History — disabling deletes all cloud copies</li>
       <li><strong>Delete all data:</strong> Delete the app to remove all local data permanently</li>
       <li><strong>Manage subscription:</strong> Cancel anytime via App Store → Account → Subscriptions</li>
     </ul>
-    <p>As MoodShift requires no account, there is no profile to delete. All your data exists only on your device and optionally in your own iCloud account.</p>
+    <p>As MoodShift requires no account, there is no profile to delete. All your data exists only on your device.</p>
   </div>
 
   <div class="section">
     <h2>Mental health &amp; sensitive data</h2>
     <div class="block green-block">
       <span class="block-title">Our commitment</span>
-      <p>CBT sessions may contain deeply personal thoughts and feelings. This is exactly why we built MoodShift with a local-first architecture — your most sensitive data never leaves your device unless you explicitly choose iCloud sync.</p>
+      <p>CBT sessions may contain deeply personal thoughts and feelings. This is exactly why we built MoodShift with a local-first architecture — your most sensitive data never leaves your device.</p>
       <p>MoodShift is not a substitute for professional mental health care. If you are experiencing a crisis, please contact emergency services or a mental health crisis line in your country.</p>
     </div>
   </div>
