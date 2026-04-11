@@ -121,7 +121,6 @@
     <circle cx="720" cy="400" r="270" fill="none" stroke="#d4cff5" stroke-width="0.6" opacity="0.6"/>
     <circle cx="720" cy="400" r="360" fill="none" stroke="#c5bff0" stroke-width="0.5" opacity="0.55"/>
     <circle cx="720" cy="400" r="460" fill="none" stroke="#d4cff5" stroke-width="0.5" opacity="0.45"/>
-    <circle cx="720" cy="400" r="570" fill="none" stroke="#c5bff0" stroke-width="0.4" opacity="0.35"/>
   </svg>
 </div>
 
@@ -197,14 +196,18 @@
   </div>
 
   <div class="section">
-    <h2>Subscription plans &amp; data</h2>
+    <h2>Subscription plans &amp; data access</h2>
     <div class="block">
       <span class="block-title">Free Plan</span>
-      <p>3 sessions per week. First 30 days powered by <strong>Sonnet 4.6</strong>; thereafter via <strong>Haiku 4.5</strong>. No account required.</p>
+      <p>3 sessions per week. First 30 days powered by <strong>Sonnet 4.6</strong>; thereafter permanent access via the <strong>Haiku 4.5</strong> model. No account required. All conversation data is local.</p>
     </div>
     <div class="block">
-      <span class="block-title">Premium & Voice AI</span>
-      <p>Unlimited text sessions and optional Voice AI powered by <strong>Sonnet 4.6</strong>. All conversation data remains strictly local. Voice processing is performed entirely on-device via Apple frameworks.</p>
+      <span class="block-title">Premium Plan</span>
+      <p>Includes unlimited text-only sessions (10/10 format) powered by <strong>Sonnet 4.6</strong>. Includes full access to AI Coach Personalization. Data remains strictly local to your device.</p>
+    </div>
+    <div class="block">
+      <span class="block-title">Voice AI Plan</span>
+      <p>Our most advanced tier. Includes unlimited text sessions (extended 15/15 format) plus 30 Voice AI sessions per month, all powered by <strong>Sonnet 4.6</strong>. Voice processing is performed entirely on-device via Apple's local frameworks; no audio is ever transmitted or stored.</p>
     </div>
   </div>
 
@@ -229,189 +232,6 @@
 
   <div class="footer">
     <p>© 2026 MoodShift: CBT AI Coach &nbsp;·&nbsp; <span>Privacy by Design</span></p>
-    <p style="margin-top:8px">Version 1.1 &nbsp;·&nbsp; Effective April 2026</p>
-  </div>
-
-</div>
-</body>
-</html>  h2::before { content:''; display:block; width:4px; height:28px; background:var(--purple); border-radius:2px; flex-shrink:0; }
-  h3 { font-size:15px; font-weight:500; color:var(--purple); margin:24px 0 10px; letter-spacing:0.3px; }
-  p { color:var(--text-body); margin-bottom:14px; font-size:15px; }
-  ul { list-style:none; margin:0 0 14px; padding:0; }
-  ul li { color:var(--text-body); font-size:15px; padding:7px 0 7px 26px; position:relative; border-bottom:0.5px solid rgba(124,111,205,0.1); }
-  ul li:last-child { border-bottom:none; }
-  ul li::before { content:'→'; position:absolute; left:0; color:var(--purple); font-size:13px; top:9px; }
-
-  .block { background:white; border:0.5px solid var(--border); border-radius:18px; padding:24px; margin:20px 0; box-shadow:0 2px 12px rgba(124,111,205,0.06); }
-  .block.green-block { border-color:rgba(59,109,17,0.3); background:var(--green-bg); box-shadow:0 2px 12px rgba(59,109,17,0.06); }
-  .block.green-block p,.block.green-block li { color:#3a5a18; }
-  .block.green-block li::before { color:var(--green); }
-  
-  .block.red-block { border-color:rgba(242,78,112,0.3); background:var(--red-bg); box-shadow:0 2px 12px rgba(242,78,112,0.06); }
-  .block.red-block p, .block.red-block li { color:var(--red); }
-  .block.red-block li::before { color:#f24e70; }
-
-  .block-title { font-size:12px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--purple-light); margin-bottom:12px; display:block; }
-  .block.green-block .block-title { color:var(--green); }
-  .block.red-block .block-title { color:#f24e70; }
-
-  .contact { background:linear-gradient(135deg,white,rgba(240,238,255,0.8)); border:1px solid var(--border-strong); border-radius:24px; padding:48px 40px; text-align:center; margin-top:64px; box-shadow:0 4px 24px rgba(124,111,205,0.1); }
-  .contact h2 { justify-content:center; margin-bottom:12px; }
-  .contact h2::before { display:none; }
-  .contact p { margin-bottom:28px; }
-  .contact-btn { display:inline-block; background:var(--purple); color:white; text-decoration:none; padding:14px 36px; border-radius:100px; font-size:15px; font-weight:500; box-shadow:0 4px 16px rgba(124,111,205,0.35); transition:transform 0.2s,box-shadow 0.2s; }
-  .contact-btn:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(124,111,205,0.45); }
-
-  .footer { text-align:center; margin-top:72px; padding-top:32px; border-top:0.5px solid var(--border); color:var(--text-muted); font-size:13px; }
-  .footer span { color:var(--purple); }
-  a { color:var(--purple); text-decoration:none; }
-  a:hover { text-decoration:underline; }
-
-  @media(max-width:600px){
-    .container{padding:48px 16px 80px}
-    h1{font-size:30px}
-    .highlights{grid-template-columns:1fr 1fr}
-    .contact{padding:32px 20px}
-  }
-</style>
-</head>
-<body>
-
-<div class="bg-rings">
-  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="bgGrad" cx="50%" cy="45%" r="70%">
-        <stop offset="0%" stop-color="#eeedfe" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#f8f6ff" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <rect width="1440" height="900" fill="url(#bgGrad)"/>
-    <circle cx="720" cy="400" r="60"  fill="none" stroke="#c5bff0" stroke-width="0.8" opacity="0.9"/>
-    <circle cx="720" cy="400" r="120" fill="none" stroke="#d4cff5" stroke-width="0.7" opacity="0.8"/>
-    <circle cx="720" cy="400" r="190" fill="none" stroke="#c5bff0" stroke-width="0.6" opacity="0.7"/>
-    <circle cx="720" cy="400" r="270" fill="none" stroke="#d4cff5" stroke-width="0.6" opacity="0.6"/>
-    <circle cx="720" cy="400" r="360" fill="none" stroke="#c5bff0" stroke-width="0.5" opacity="0.55"/>
-    <circle cx="720" cy="400" r="460" fill="none" stroke="#d4cff5" stroke-width="0.5" opacity="0.45"/>
-    <circle cx="720" cy="400" r="570" fill="none" stroke="#c5bff0" stroke-width="0.4" opacity="0.35"/>
-    <circle cx="720" cy="400" r="690" fill="none" stroke="#d4cff5" stroke-width="0.4" opacity="0.28"/>
-    <circle cx="720" cy="400" r="820" fill="none" stroke="#c5bff0" stroke-width="0.3" opacity="0.2"/>
-    <circle cx="720" cy="400" r="960" fill="none" stroke="#d4cff5" stroke-width="0.3" opacity="0.15"/>
-  </svg>
-</div>
-
-<div class="container">
-
-  <div class="header">
-    <div class="logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-      </div>
-      <div>
-        <span class="logo-name">MoodShift</span>
-        <span class="logo-sub">CBT AI Coach</span>
-      </div>
-    </div>
-    <h1>Privacy <em>Policy</em></h1>
-    <div class="header-meta">
-      <span class="meta-pill">Effective: April 2026</span>
-      <span class="meta-pill">Version 1.1</span>
-      <span class="meta-pill">GDPR Compliant</span>
-    </div>
-  </div>
-
-  <div class="summary-card">
-    <p><strong>The short version:</strong> MoodShift is built on a foundation of privacy. Your conversations stay exclusively on your device. We never sell your data, never show you ads, and we use AI only to power your coaching sessions — not to profile you.</p>
-  </div>
-
-  <div class="highlights">
-    <div class="highlight"><span class="highlight-icon">🔒</span><span class="highlight-title">Local by default</span><span class="highlight-desc">Sessions stored on your device only</span></div>
-    <div class="highlight"><span class="highlight-icon">🚫</span><span class="highlight-title">No ads, ever</span><span class="highlight-desc">We never sell or share your data</span></div>
-    <div class="highlight"><span class="highlight-icon">🧠</span><span class="highlight-title">AI without tracking</span><span class="highlight-desc">Claude API processes, doesn't store</span></div>
-    <div class="highlight"><span class="highlight-icon">🗑️</span><span class="highlight-title">Delete anytime</span><span class="highlight-desc">Full control over your data</span></div>
-  </div>
-
-  <hr class="divider"/>
-
-  <div class="section">
-    <h2>Who we are</h2>
-    <p>MoodShift: CBT AI Coach ("MoodShift", "we", "our") is an iOS mental wellness application. MoodShift uses Cognitive Behavioral Therapy (CBT) techniques delivered through an AI-powered coaching interface.</p>
-    
-    <div class="block red-block">
-      <span class="block-title">⚠ IMPORTANT: MEDICAL DISCLAIMER</span>
-      <p>MoodShift is <strong>not a medical device</strong> and does not provide clinical therapy, diagnosis, or treatment. It is a self-help wellness tool designed to support emotional reflection and cognitive reframing.</p>
-      <p style="margin-top:10px; font-weight: 500;">If you are experiencing a crisis, please contact emergency services or a mental health crisis line immediately.</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>What we collect</h2>
-
-    <h3>Technical Identifiers (Anonymous)</h3>
-    <div class="block">
-        <span class="block-title">Analytics & Verification</span>
-        <p>We use an <strong>anonymous Device ID</strong> (processed via Cloudflare) solely for technical purposes: to verify eligibility for the 30-day Free Trial period and to ensure app stability. This ID is not linked to your identity, name, or email, as MoodShift does not require user accounts.</p>
-    </div>
-
-    <h3>Data stored locally on your device</h3>
-    <div class="block green-block">
-      <span class="block-title">✓ Stays on your iPhone — never uploaded</span>
-      <ul>
-        <li>CBT session conversations and messages</li>
-        <li>Mood scores (1–10) from completed sessions</li>
-        <li>AI memory summaries — only if you enable "AI Coach Personalization"</li>
-        <li>Session history, type, and completion status</li>
-        <li>App preferences (language, theme, disclaimer acceptance)</li>
-      </ul>
-    </div>
-
-    <h3>Data processed by AI (not stored)</h3>
-    <div class="block">
-      <span class="block-title">Anthropic Claude API</span>
-      <p>Your messages are processed in real-time by the Claude API to generate coaching responses. This data is <strong>not stored or used for AI training</strong> under our agreement. We do not use cloud backups or remote storage (no iCloud).</p>
-    </div>
-
-    <h3>Purchase information</h3>
-    <p>Subscriptions are processed entirely by Apple. We never see or store your payment details. We receive only status confirmation via StoreKit 2.</p>
-  </div>
-
-  <div class="section">
-    <h2>Subscription plans &amp; data</h2>
-    <div class="block">
-      <span class="block-title">Free Plan</span>
-      <p>3 text sessions per week. First 30 days powered by <strong>Sonnet 4.6</strong> model; thereafter permanent access via <strong>Haiku 4.5</strong> model. No account required. All data local only.</p>
-    </div>
-    <div class="block">
-      <span class="block-title">Premium</span>
-      <p>Unlimited standard text sessions (10 questions per session) powered by <strong>Sonnet 4.6</strong>. Includes AI Coach Personalization. All conversation data remains strictly local to your device.</p>
-    </div>
-    <div class="block">
-      <span class="block-title">Voice AI</span>
-      <p>Everything in Premium (with <strong>Sonnet 4.6</strong> model) plus 30 Voice AI sessions per month. Voice processing (STT/TTS) is performed entirely on-device via Apple frameworks. No audio recordings are ever stored, transmitted, or leave your iPhone.</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Your rights &amp; controls</h2>
-    <ul>
-      <li><strong>Delete sessions:</strong> Swipe left on any session in History to delete permanently.</li>
-      <li><strong>Delete all data:</strong> Delete the app to remove all local data permanently. <strong>Note:</strong> Since we do not use cloud backups, deleted data cannot be recovered.</li>
-      <li><strong>Manage subscription:</strong> Cancel anytime via App Store → Account → Subscriptions.</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Children's privacy</h2>
-    <p>MoodShift is intended exclusively for users aged 18 and older. We do not knowingly collect data from minors. If you believe a minor has used MoodShift, please contact us at moodshift.coach@gmail.com.</p>
-  </div>
-
-  <div class="contact">
-    <h2>Questions?</h2>
-    <p>We're a small independent team and we take privacy seriously. Reach out directly if you have questions.</p>
-    <a href="mailto:moodshift.coach@gmail.com" class="contact-btn">Contact Support</a>
-  </div>
-
-  <div class="footer">
-    <p>© 2026 MoodShift: CBT AI Coach &nbsp;·&nbsp; <span>Built with privacy in mind</span></p>
     <p style="margin-top:8px">Version 1.1 &nbsp;·&nbsp; Effective April 2026</p>
   </div>
 
