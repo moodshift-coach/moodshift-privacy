@@ -30,6 +30,40 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-size:16px; line-height:1.8; min-height:100vh; overflow-x:hidden; scroll-behavior: smooth; }
 
+  /* ── Language Switcher ── */
+  .lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    gap: 4px;
+    background: white;
+    border: 1px solid var(--border-strong);
+    border-radius: 100px;
+    padding: 4px;
+    box-shadow: 0 4px 20px rgba(124,111,205,0.15);
+  }
+  .lang-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 6px 12px;
+    border-radius: 100px;
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .lang-btn:hover { color: var(--purple); }
+  .lang-btn.active {
+    background: var(--purple);
+    color: white;
+    box-shadow: 0 2px 8px rgba(124,111,205,0.35);
+  }
+
   .bg-rings {
     position:fixed; top:0; left:0; width:100%; height:100%;
     pointer-events:none; z-index:0; overflow:hidden;
@@ -96,15 +130,27 @@
   a { color:var(--purple); text-decoration:none; }
   a:hover { text-decoration:underline; }
 
+  /* hide all lang sections by default */
+  [data-lang] { display: none; }
+  [data-lang].active { display: block; }
+
   @media(max-width:600px){
-    .container{padding:48px 16px 80px}
+    .container{padding:60px 16px 80px}
     h1{font-size:30px}
     .highlights{grid-template-columns:1fr 1fr}
     .contact{padding:32px 20px}
+    .lang-switcher{top:12px; right:12px;}
   }
 </style>
 </head>
 <body>
+
+<!-- ── Language Switcher ── -->
+<div class="lang-switcher" role="navigation" aria-label="Language selector">
+  <button class="lang-btn active" onclick="setLang('en')" aria-label="English">EN</button>
+  <button class="lang-btn" onclick="setLang('pl')" aria-label="Polski">PL</button>
+  <button class="lang-btn" onclick="setLang('de')" aria-label="Deutsch">DE</button>
+</div>
 
 <div class="bg-rings">
   <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -126,115 +172,378 @@
 
 <div class="container">
 
-  <div class="header">
-    <div class="logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+  <!-- ════════════════════════════════
+       ENGLISH
+  ════════════════════════════════ -->
+  <div data-lang="en" class="active">
+
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <div>
+          <span class="logo-name">MoodShift</span>
+          <span class="logo-sub">CBT AI Coach</span>
+        </div>
       </div>
-      <div>
-        <span class="logo-name">MoodShift</span>
-        <span class="logo-sub">CBT AI Coach</span>
+      <h1>Privacy <em>Policy</em></h1>
+      <div class="header-meta">
+        <span class="meta-pill">Effective: April 2026</span>
+        <span class="meta-pill">Version 1.1</span>
+        <span class="meta-pill">GDPR Compliant</span>
       </div>
     </div>
-    <h1>Privacy <em>Policy</em></h1>
-    <div class="header-meta">
-      <span class="meta-pill">Effective: April 2026</span>
-      <span class="meta-pill">Version 1.1</span>
-      <span class="meta-pill">GDPR Compliant</span>
+
+    <div class="summary-card">
+      <p><strong>The short version:</strong> <strong>MoodShift: CBT AI Coach</strong> (hereinafter referred to as "the App" or "MoodShift") is built on a foundation of privacy. Your conversations stay exclusively on your device. We never sell your data, never show you ads, and we use AI only to power your sessions — not to profile you.</p>
     </div>
-  </div>
 
-  <div class="summary-card">
-    <p><strong>The short version:</strong> <strong>MoodShift: CBT AI Coach</strong> (hereinafter referred to as "the App" or "MoodShift") is built on a foundation of privacy. Your conversations stay exclusively on your device. We never sell your data, never show you ads, and we use AI only to power your sessions — not to profile you.</p>
-  </div>
-
-  <div class="highlights">
-    <div class="highlight"><span class="highlight-icon">🔒</span><span class="highlight-title">Local by default</span><span class="highlight-desc">Sessions stored on your device only</span></div>
-    <div class="highlight"><span class="highlight-icon">🚫</span><span class="highlight-title">No ads, ever</span><span class="highlight-desc">We never sell or share your data</span></div>
-    <div class="highlight"><span class="highlight-icon">🧠</span><span class="highlight-title">AI without tracking</span><span class="highlight-desc">Claude API processes, doesn't store</span></div>
-    <div class="highlight"><span class="highlight-icon">🗑️</span><span class="highlight-title">Delete anytime</span><span class="highlight-desc">Full control over your data</span></div>
-  </div>
-
-  <hr class="divider"/>
-
-  <div class="section">
-    <h2>Who we are</h2>
-    <p>MoodShift: CBT AI Coach ("we", "our") is an iOS mental wellness application. The App uses Cognitive Behavioral Therapy (CBT) techniques delivered through an AI-powered coaching interface.</p>
-    
-    <div class="block red-block">
-      <span class="block-title">⚠ IMPORTANT: MEDICAL DISCLAIMER</span>
-      <p>MoodShift is <strong>not a medical device</strong> and does not provide clinical therapy, diagnosis, or treatment. It is a self-help wellness tool designed to support emotional reflection.</p>
-      <p style="margin-top:10px; font-weight: 500;">If you are experiencing a crisis, please contact emergency services or a mental health crisis line immediately.</p>
+    <div class="highlights">
+      <div class="highlight"><span class="highlight-icon">🔒</span><span class="highlight-title">Local by default</span><span class="highlight-desc">Sessions stored on your device only</span></div>
+      <div class="highlight"><span class="highlight-icon">🚫</span><span class="highlight-title">No ads, ever</span><span class="highlight-desc">We never sell or share your data</span></div>
+      <div class="highlight"><span class="highlight-icon">🧠</span><span class="highlight-title">AI without tracking</span><span class="highlight-desc">Claude API processes, doesn't store</span></div>
+      <div class="highlight"><span class="highlight-icon">🗑️</span><span class="highlight-title">Delete anytime</span><span class="highlight-desc">Full control over your data</span></div>
     </div>
-  </div>
 
-  <div class="section">
-    <h2>What we collect</h2>
+    <hr class="divider"/>
 
-    <h3>Technical Identifiers (Anonymous)</h3>
-    <div class="block">
-        <span class="block-title">Analytics & Verification</span>
+    <div class="section">
+      <h2>Who we are</h2>
+      <p>MoodShift: CBT AI Coach ("we", "our") is an iOS mental wellness application. The App uses Cognitive Behavioral Therapy (CBT) techniques delivered through an AI-powered coaching interface.</p>
+      <div class="block red-block">
+        <span class="block-title">⚠ IMPORTANT: MEDICAL DISCLAIMER</span>
+        <p>MoodShift is <strong>not a medical device</strong> and does not provide clinical therapy, diagnosis, or treatment. It is a self-help wellness tool designed to support emotional reflection.</p>
+        <p style="margin-top:10px; font-weight:500;">If you are experiencing a crisis, please contact emergency services or a mental health crisis line immediately.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>What we collect</h2>
+      <h3>Technical Identifiers (Anonymous)</h3>
+      <div class="block">
+        <span class="block-title">Analytics &amp; Verification</span>
         <p>We use an <strong>anonymous Device ID</strong> (processed via Cloudflare) solely for technical purposes: to verify eligibility for the 14-day Free Trial period and to ensure app stability. This ID is not linked to your identity, as MoodShift does not require user accounts.</p>
+      </div>
+      <h3>Data stored locally on your device</h3>
+      <div class="block green-block">
+        <span class="block-title">✓ Stays on your iPhone — never uploaded</span>
+        <ul>
+          <li>CBT session conversations and messages</li>
+          <li>Mood scores (1–10) from completed sessions</li>
+          <li>AI memory summaries (if enabled)</li>
+          <li>Session history and completion status</li>
+        </ul>
+      </div>
+      <h3>Data processed by AI (not stored)</h3>
+      <div class="block">
+        <span class="block-title">Anthropic Claude API</span>
+        <p>Your messages are processed in real-time by the Claude API to generate coaching responses. This data is <strong>not stored or used for AI training</strong> under our agreement. We do not use cloud backups (no iCloud).</p>
+      </div>
     </div>
 
-    <h3>Data stored locally on your device</h3>
-    <div class="block green-block">
-      <span class="block-title">✓ Stays on your iPhone — never uploaded</span>
+    <div class="section">
+      <h2>Subscription plans &amp; data access</h2>
+      <div class="block">
+        <span class="block-title">Free Plan</span>
+        <p>3 sessions per week. First 14 days powered by <strong>Sonnet 4.6</strong>; thereafter permanent access via the <strong>Haiku 4.5</strong> model. No account required. All conversation data is local.</p>
+      </div>
+      <div class="block">
+        <span class="block-title">Premium Plan</span>
+        <p>Includes unlimited text-only sessions (10/10 format) powered by <strong>Sonnet 4.6</strong>. Includes full access to AI Coach Personalization. Data remains strictly local to your device.</p>
+      </div>
+      <div class="block">
+        <span class="block-title">Voice AI Plan</span>
+        <p>Our most advanced tier. Includes unlimited text sessions (extended 15/15 format) plus 30 Voice AI sessions per month, all powered by <strong>Sonnet 4.6</strong>. Voice processing is performed entirely on-device via Apple's local frameworks; no audio is ever transmitted or stored.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Your rights &amp; controls</h2>
       <ul>
-        <li>CBT session conversations and messages</li>
-        <li>Mood scores (1–10) from completed sessions</li>
-        <li>AI memory summaries (if enabled)</li>
-        <li>Session history and completion status</li>
+        <li><strong>Delete data:</strong> Swipe left on any session to delete, or delete the App to remove all local data permanently.</li>
+        <li><strong>Manage subscription:</strong> Cancel anytime via App Store → Account → Subscriptions.</li>
       </ul>
     </div>
 
-    <h3>Data processed by AI (not stored)</h3>
-    <div class="block">
-      <span class="block-title">Anthropic Claude API</span>
-      <p>Your messages are processed in real-time by the Claude API to generate coaching responses. This data is <strong>not stored or used for AI training</strong> under our agreement. We do not use cloud backups (no iCloud).</p>
+    <div class="section">
+      <h2>Children's privacy</h2>
+      <p>MoodShift: CBT AI Coach is intended exclusively for users aged 18 and older. We do not knowingly collect data from minors. If you believe a minor has used the App, please <a href="#contact">contact our support team</a> using the details provided at the bottom of this page.</p>
     </div>
-  </div>
 
-  <div class="section">
-    <h2>Subscription plans &amp; data access</h2>
-    <div class="block">
-      <span class="block-title">Free Plan</span>
-      <p>3 sessions per week. First 14 days powered by <strong>Sonnet 4.6</strong>; thereafter permanent access via the <strong>Haiku 4.5</strong> model. No account required. All conversation data is local.</p>
+    <div class="contact" id="contact">
+      <h2>Questions?</h2>
+      <p>We're a small independent team and we take privacy seriously. Reach out directly if you have questions.</p>
+      <a href="mailto:moodshift.coach@gmail.com" class="contact-btn">Contact Support</a>
     </div>
-    <div class="block">
-      <span class="block-title">Premium Plan</span>
-      <p>Includes unlimited text-only sessions (10/10 format) powered by <strong>Sonnet 4.6</strong>. Includes full access to AI Coach Personalization. Data remains strictly local to your device.</p>
+
+    <div class="footer">
+      <p>© 2026 MoodShift: CBT AI Coach &nbsp;·&nbsp; <span>Privacy by Design</span></p>
+      <p style="margin-top:8px">Version 1.1 &nbsp;·&nbsp; Effective April 2026</p>
     </div>
-    <div class="block">
-      <span class="block-title">Voice AI Plan</span>
-      <p>Our most advanced tier. Includes unlimited text sessions (extended 15/15 format) plus 30 Voice AI sessions per month, all powered by <strong>Sonnet 4.6</strong>. Voice processing is performed entirely on-device via Apple's local frameworks; no audio is ever transmitted or stored.</p>
+
+  </div><!-- /en -->
+
+
+  <!-- ════════════════════════════════
+       POLSKI
+  ════════════════════════════════ -->
+  <div data-lang="pl">
+
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <div>
+          <span class="logo-name">MoodShift</span>
+          <span class="logo-sub">CBT AI Coach</span>
+        </div>
+      </div>
+      <h1>Polityka <em>Prywatności</em></h1>
+      <div class="header-meta">
+        <span class="meta-pill">Obowiązuje od: kwiecień 2026</span>
+        <span class="meta-pill">Wersja 1.1</span>
+        <span class="meta-pill">Zgodność z RODO</span>
+      </div>
     </div>
-  </div>
 
-  <div class="section">
-    <h2>Your rights &amp; controls</h2>
-    <ul>
-      <li><strong>Delete data:</strong> Swipe left on any session to delete, or delete the App to remove all local data permanently.</li>
-      <li><strong>Manage subscription:</strong> Cancel anytime via App Store → Account → Subscriptions.</li>
-    </ul>
-  </div>
+    <div class="summary-card">
+      <p><strong>Krótka wersja:</strong> <strong>MoodShift: CBT AI Coach</strong> (dalej zwany „Aplikacją" lub „MoodShift") został zbudowany na fundamencie prywatności. Twoje rozmowy pozostają wyłącznie na Twoim urządzeniu. Nigdy nie sprzedajemy Twoich danych, nie wyświetlamy reklam i używamy AI wyłącznie do obsługi sesji — nie do profilowania.</p>
+    </div>
 
-  <div class="section">
-    <h2>Children's privacy</h2>
-    <p>MoodShift: CBT AI Coach is intended exclusively for users aged 18 and older. We do not knowingly collect data from minors. If you believe a minor has used the App, please <a href="#contact">contact our support team</a> using the details provided at the bottom of this page.</p>
-  </div>
+    <div class="highlights">
+      <div class="highlight"><span class="highlight-icon">🔒</span><span class="highlight-title">Lokalnie domyślnie</span><span class="highlight-desc">Sesje przechowywane tylko na Twoim urządzeniu</span></div>
+      <div class="highlight"><span class="highlight-icon">🚫</span><span class="highlight-title">Zero reklam</span><span class="highlight-desc">Nigdy nie sprzedajemy ani nie udostępniamy danych</span></div>
+      <div class="highlight"><span class="highlight-icon">🧠</span><span class="highlight-title">AI bez śledzenia</span><span class="highlight-desc">Claude API przetwarza, ale nie przechowuje</span></div>
+      <div class="highlight"><span class="highlight-icon">🗑️</span><span class="highlight-title">Usuń w każdej chwili</span><span class="highlight-desc">Pełna kontrola nad Twoimi danymi</span></div>
+    </div>
 
-  <div class="contact" id="contact">
-    <h2>Questions?</h2>
-    <p>We're a small independent team and we take privacy seriously. Reach out directly if you have questions.</p>
-    <a href="mailto:moodshift.coach@gmail.com" class="contact-btn">Contact Support</a>
-  </div>
+    <hr class="divider"/>
 
-  <div class="footer">
-    <p>© 2026 MoodShift: CBT AI Coach &nbsp;·&nbsp; <span>Privacy by Design</span></p>
-    <p style="margin-top:8px">Version 1.1 &nbsp;·&nbsp; Effective April 2026</p>
-  </div>
+    <div class="section">
+      <h2>Kim jesteśmy</h2>
+      <p>MoodShift: CBT AI Coach („my", „nas") to aplikacja iOS wspierająca zdrowie psychiczne. Aplikacja wykorzystuje techniki Terapii Poznawczo-Behawioralnej (CBT) realizowane za pośrednictwem interfejsu coachingowego opartego na sztucznej inteligencji.</p>
+      <div class="block red-block">
+        <span class="block-title">⚠ WAŻNE: ZASTRZEŻENIE MEDYCZNE</span>
+        <p>MoodShift <strong>nie jest urządzeniem medycznym</strong> i nie świadczy terapii klinicznej, diagnozy ani leczenia. Jest to narzędzie samopomocowe zaprojektowane w celu wsparcia refleksji emocjonalnej.</p>
+        <p style="margin-top:10px; font-weight:500;">W sytuacji kryzysowej skontaktuj się natychmiast ze służbami ratunkowymi lub telefonem zaufania dla osób w kryzysie psychicznym.</p>
+      </div>
+    </div>
 
-</div>
+    <div class="section">
+      <h2>Co zbieramy</h2>
+      <h3>Identyfikatory techniczne (anonimowe)</h3>
+      <div class="block">
+        <span class="block-title">Analityka i weryfikacja</span>
+        <p>Używamy <strong>anonimowego identyfikatora urządzenia</strong> (przetwarzanego przez Cloudflare) wyłącznie w celach technicznych: weryfikacji prawa do 14-dniowego okresu próbnego oraz zapewnienia stabilności aplikacji. Identyfikator ten nie jest powiązany z Twoją tożsamością — MoodShift nie wymaga zakładania konta.</p>
+      </div>
+      <h3>Dane przechowywane lokalnie na Twoim urządzeniu</h3>
+      <div class="block green-block">
+        <span class="block-title">✓ Pozostają na Twoim iPhonie — nigdy nie są przesyłane</span>
+        <ul>
+          <li>Rozmowy i wiadomości z sesji CBT</li>
+          <li>Oceny nastroju (1–10) z ukończonych sesji</li>
+          <li>Podsumowania pamięci AI (jeśli włączone)</li>
+          <li>Historia sesji i status ukończenia</li>
+        </ul>
+      </div>
+      <h3>Dane przetwarzane przez AI (nieprzechowywane)</h3>
+      <div class="block">
+        <span class="block-title">Anthropic Claude API</span>
+        <p>Twoje wiadomości są przetwarzane w czasie rzeczywistym przez Claude API w celu generowania odpowiedzi coachingowych. Dane te <strong>nie są przechowywane ani wykorzystywane do trenowania AI</strong> zgodnie z naszą umową. Nie korzystamy z kopii zapasowych w chmurze (brak iCloud).</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Plany subskrypcji i dostęp do danych</h2>
+      <div class="block">
+        <span class="block-title">Plan Bezpłatny</span>
+        <p>3 sesje tygodniowo. Pierwsze 14 dni obsługiwane przez <strong>Sonnet 4.6</strong>; następnie stały dostęp przez model <strong>Haiku 4.5</strong>. Konto nie jest wymagane. Wszystkie dane rozmów są lokalne.</p>
+      </div>
+      <div class="block">
+        <span class="block-title">Plan Premium</span>
+        <p>Obejmuje nieograniczone sesje tekstowe (format 10/10) obsługiwane przez <strong>Sonnet 4.6</strong>. Pełny dostęp do personalizacji AI Coach. Dane pozostają ściśle lokalne na Twoim urządzeniu.</p>
+      </div>
+      <div class="block">
+        <span class="block-title">Plan Voice AI</span>
+        <p>Nasz najbardziej zaawansowany poziom. Obejmuje nieograniczone sesje tekstowe (rozszerzony format 15/15) oraz 30 sesji Voice AI miesięcznie — wszystkie obsługiwane przez <strong>Sonnet 4.6</strong>. Przetwarzanie głosu odbywa się w całości na urządzeniu za pomocą lokalnych frameworków Apple; żadne nagrania audio nie są przesyłane ani przechowywane.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Twoje prawa i kontrola</h2>
+      <ul>
+        <li><strong>Usuwanie danych:</strong> Przesuń w lewo dowolną sesję, aby ją usunąć, lub usuń Aplikację, aby trwale usunąć wszystkie dane lokalne.</li>
+        <li><strong>Zarządzanie subskrypcją:</strong> Anuluj w dowolnym momencie przez App Store → Konto → Subskrypcje.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Prywatność dzieci</h2>
+      <p>MoodShift: CBT AI Coach jest przeznaczony wyłącznie dla użytkowników w wieku 18 lat i starszych. Nie zbieramy świadomie danych od osób niepełnoletnich. Jeśli uważasz, że z Aplikacji korzystała osoba niepełnoletnia, prosimy o <a href="#contact-pl">kontakt z naszym zespołem wsparcia</a> korzystając z danych podanych na dole tej strony.</p>
+    </div>
+
+    <div class="contact" id="contact-pl">
+      <h2>Pytania?</h2>
+      <p>Jesteśmy małym niezależnym zespołem i traktujemy prywatność poważnie. Napisz do nas bezpośrednio, jeśli masz pytania.</p>
+      <a href="mailto:moodshift.coach@gmail.com" class="contact-btn">Skontaktuj się z pomocą</a>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 MoodShift: CBT AI Coach &nbsp;·&nbsp; <span>Prywatność przez projektowanie</span></p>
+      <p style="margin-top:8px">Wersja 1.1 &nbsp;·&nbsp; Obowiązuje od kwietnia 2026</p>
+    </div>
+
+  </div><!-- /pl -->
+
+
+  <!-- ════════════════════════════════
+       DEUTSCH
+  ════════════════════════════════ -->
+  <div data-lang="de">
+
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <div>
+          <span class="logo-name">MoodShift</span>
+          <span class="logo-sub">CBT AI Coach</span>
+        </div>
+      </div>
+      <h1>Daten&shy;schutz&shy;<em>erklärung</em></h1>
+      <div class="header-meta">
+        <span class="meta-pill">Gültig ab: April 2026</span>
+        <span class="meta-pill">Version 1.1</span>
+        <span class="meta-pill">DSGVO-konform</span>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <p><strong>Kurzfassung:</strong> <strong>MoodShift: CBT AI Coach</strong> (nachfolgend „die App" oder „MoodShift") ist auf einem Fundament des Datenschutzes aufgebaut. Deine Gespräche bleiben ausschließlich auf deinem Gerät. Wir verkaufen deine Daten nie, zeigen nie Werbung und nutzen KI nur für deine Sitzungen — nicht zur Profilbildung.</p>
+    </div>
+
+    <div class="highlights">
+      <div class="highlight"><span class="highlight-icon">🔒</span><span class="highlight-title">Lokal als Standard</span><span class="highlight-desc">Sitzungen nur auf deinem Gerät gespeichert</span></div>
+      <div class="highlight"><span class="highlight-icon">🚫</span><span class="highlight-title">Keine Werbung</span><span class="highlight-desc">Wir verkaufen oder teilen deine Daten nie</span></div>
+      <div class="highlight"><span class="highlight-icon">🧠</span><span class="highlight-title">KI ohne Tracking</span><span class="highlight-desc">Claude API verarbeitet, speichert nicht</span></div>
+      <div class="highlight"><span class="highlight-icon">🗑️</span><span class="highlight-title">Jederzeit löschen</span><span class="highlight-desc">Volle Kontrolle über deine Daten</span></div>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="section">
+      <h2>Wer wir sind</h2>
+      <p>MoodShift: CBT AI Coach („wir", „uns") ist eine iOS-App für mentales Wohlbefinden. Die App nutzt Techniken der Kognitiven Verhaltenstherapie (KVT/CBT), die über eine KI-gestützte Coaching-Oberfläche vermittelt werden.</p>
+      <div class="block red-block">
+        <span class="block-title">⚠ WICHTIG: MEDIZINISCHER HAFTUNGSAUSSCHLUSS</span>
+        <p>MoodShift ist <strong>kein Medizinprodukt</strong> und bietet keine klinische Therapie, Diagnose oder Behandlung. Es handelt sich um ein Selbsthilfe-Werkzeug zur Unterstützung der emotionalen Reflexion.</p>
+        <p style="margin-top:10px; font-weight:500;">Wenn du dich in einer Krisensituation befindest, wende dich sofort an den Notruf oder eine Krisenhotline für psychische Gesundheit.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Was wir erheben</h2>
+      <h3>Technische Identifikatoren (anonym)</h3>
+      <div class="block">
+        <span class="block-title">Analyse &amp; Verifizierung</span>
+        <p>Wir verwenden eine <strong>anonyme Geräte-ID</strong> (verarbeitet über Cloudflare) ausschließlich zu technischen Zwecken: zur Überprüfung der Berechtigung für den 14-tägigen kostenlosen Testzeitraum und zur Sicherstellung der App-Stabilität. Diese ID ist nicht mit deiner Identität verknüpft, da MoodShift kein Benutzerkonto erfordert.</p>
+      </div>
+      <h3>Lokal auf deinem Gerät gespeicherte Daten</h3>
+      <div class="block green-block">
+        <span class="block-title">✓ Verbleiben auf deinem iPhone — werden nie hochgeladen</span>
+        <ul>
+          <li>CBT-Sitzungsgespräche und Nachrichten</li>
+          <li>Stimmungswerte (1–10) aus abgeschlossenen Sitzungen</li>
+          <li>KI-Gedächtniszusammenfassungen (falls aktiviert)</li>
+          <li>Sitzungsverlauf und Abschlussstatus</li>
+        </ul>
+      </div>
+      <h3>Von der KI verarbeitete Daten (nicht gespeichert)</h3>
+      <div class="block">
+        <span class="block-title">Anthropic Claude API</span>
+        <p>Deine Nachrichten werden in Echtzeit von der Claude API verarbeitet, um Coaching-Antworten zu generieren. Diese Daten werden <strong>gemäß unserer Vereinbarung weder gespeichert noch für KI-Training verwendet</strong>. Wir nutzen keine Cloud-Backups (kein iCloud).</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Abonnementpläne &amp; Datenzugriff</h2>
+      <div class="block">
+        <span class="block-title">Kostenloser Plan</span>
+        <p>3 Sitzungen pro Woche. Die ersten 14 Tage werden von <strong>Sonnet 4.6</strong> betrieben; danach dauerhafter Zugang über das <strong>Haiku 4.5</strong>-Modell. Kein Konto erforderlich. Alle Gesprächsdaten sind lokal.</p>
+      </div>
+      <div class="block">
+        <span class="block-title">Premium-Plan</span>
+        <p>Enthält unbegrenzte reine Text-Sitzungen (Format 10/10), betrieben von <strong>Sonnet 4.6</strong>. Vollzugang zur KI-Coach-Personalisierung. Daten verbleiben strikt lokal auf deinem Gerät.</p>
+      </div>
+      <div class="block">
+        <span class="block-title">Voice-AI-Plan</span>
+        <p>Unser fortschrittlichstes Tier. Enthält unbegrenzte Text-Sitzungen (erweitertes Format 15/15) sowie 30 Voice-AI-Sitzungen pro Monat — alle betrieben von <strong>Sonnet 4.6</strong>. Die Sprachverarbeitung erfolgt vollständig auf dem Gerät über Apples lokale Frameworks; es werden keine Audiodaten übertragen oder gespeichert.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Deine Rechte &amp; Kontrolle</h2>
+      <ul>
+        <li><strong>Daten löschen:</strong> Wische eine Sitzung nach links, um sie zu löschen, oder lösche die App, um alle lokalen Daten dauerhaft zu entfernen.</li>
+        <li><strong>Abonnement verwalten:</strong> Jederzeit kündbar über App Store → Konto → Abonnements.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Datenschutz für Kinder</h2>
+      <p>MoodShift: CBT AI Coach richtet sich ausschließlich an Nutzer ab 18 Jahren. Wir erheben wissentlich keine Daten von Minderjährigen. Falls du glaubst, dass ein Minderjähriger die App genutzt hat, wende dich bitte über die am Ende dieser Seite angegebenen Kontaktdaten an unser <a href="#contact-de">Support-Team</a>.</p>
+    </div>
+
+    <div class="contact" id="contact-de">
+      <h2>Fragen?</h2>
+      <p>Wir sind ein kleines unabhängiges Team und nehmen Datenschutz ernst. Melde dich direkt bei uns, wenn du Fragen hast.</p>
+      <a href="mailto:moodshift.coach@gmail.com" class="contact-btn">Support kontaktieren</a>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 MoodShift: CBT AI Coach &nbsp;·&nbsp; <span>Privacy by Design</span></p>
+      <p style="margin-top:8px">Version 1.1 &nbsp;·&nbsp; Gültig ab April 2026</p>
+    </div>
+
+  </div><!-- /de -->
+
+</div><!-- /container -->
+
+<script>
+  function setLang(lang) {
+    // update html lang attribute
+    document.documentElement.lang = lang;
+
+    // show/hide content sections
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.toggle('active', el.dataset.lang === lang);
+    });
+
+    // update button states
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+    });
+
+    // persist choice
+    try { localStorage.setItem('moodshift-lang', lang); } catch(e) {}
+  }
+
+  // restore saved preference or detect browser language
+  (function() {
+    let saved;
+    try { saved = localStorage.getItem('moodshift-lang'); } catch(e) {}
+    if (saved && ['en','pl','de'].includes(saved)) {
+      setLang(saved);
+      return;
+    }
+    const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    if (nav.startsWith('pl')) setLang('pl');
+    else if (nav.startsWith('de')) setLang('de');
+    // else stays EN (already active)
+  })();
+</script>
 </body>
 </html>
